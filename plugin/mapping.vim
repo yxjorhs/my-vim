@@ -10,7 +10,6 @@ nnoremap <leader>t :call test#test()<cr>
 
 " save
 nnoremap <leader>s :w<cr>
-nnoremap <leader>ss :w<cr>:source %<cr>
 
 " go to cmd
 nnoremap <leader>c :!
@@ -26,8 +25,7 @@ nnoremap <leader>wn :vsp<cr>
 " bufer operate 
 nnoremap <leader>bl :ls<cr>
 nnoremap <leader>bd :bd<cr>
-nnoremap <leader>bp :bp<cr>
-nnoremap <leader>bn :bn<cr>
+nnoremap <leader>bb :bn<cr>
 
 " grep
 nnoremap <leader>g :call grep#grep()<cr>

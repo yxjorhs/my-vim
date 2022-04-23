@@ -3,4 +3,5 @@ function! grep#grep()
   let suf = split(expand('%'), '\.')[-1]
   silent execute 'grep '.word.' ./*.'.suf.' ./**/*.'.suf
   execute 'redraw!'
+  execute 'cwindow'
 endfunction
