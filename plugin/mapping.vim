@@ -1,40 +1,40 @@
 let mapleader = " "
 
-inoremap jk <Esc>l
-vnoremap jk <Esc>
+inoremap <silent>jk <Esc>l
+vnoremap <silent>jk <Esc>
 
-nnoremap <leader><leader> :
+nnoremap <silent><leader><leader> :
 
 " execute test function
-nnoremap <leader>t :call test#test()<cr>
+nnoremap <silent><leader>t :call test#test()<cr>
 
 " save
-nnoremap <leader>s :w<cr>
+nnoremap <silent><leader>s :w<cr>
 
 " go to cmd
-nnoremap <leader>c :!
+nnoremap <silent><leader>c :!
 
 " window operate 
-nnoremap <leader>wh <c-w>h
-nnoremap <leader>wj <c-w>j
-nnoremap <leader>wk <c-w>k
-nnoremap <leader>wl <c-w>l
-nnoremap <leader>wd :q<cr>
-nnoremap <leader>wn :vsp<cr>
+nnoremap <silent><leader>wh <c-w>h
+nnoremap <silent><leader>wj <c-w>j
+nnoremap <silent><leader>wk <c-w>k
+nnoremap <silent><leader>wl <c-w>l
+nnoremap <silent><leader>wd :q<cr>
+nnoremap <silent><leader>wn :vsp<cr>
 
 " bufer operate 
-nnoremap <leader>bl :ls<cr>
-nnoremap <leader>bd :bd<cr>
-nnoremap <leader>bb :bn<cr>
+nnoremap <silent><leader>bl :ls<cr>
+nnoremap <silent><leader>bd :bd<cr>
+nnoremap <silent><leader>bn :bn<cr>
 
 " grep
-nnoremap <leader>g :call grep#grep()<cr>
+nnoremap <silent><leader>g :call grep#grep()<cr>
 
-inoremap { {<cr>}<Esc>O
-inoremap ( ()<Esc>i
-inoremap < <><Esc>i
-inoremap [ []<Esc>i
-inoremap ' ''<Esc>i
-inoremap " ""<Esc>i
-inoremap /** /**  */<Esc>hhi
+inoremap <silent>{ {<cr>}<Esc>O
+inoremap <silent>( ()<Esc>i
+inoremap <silent>< <><Esc>i
+inoremap <silent>[ []<Esc>i
+inoremap <silent>' ''<Esc>i
+inoremap <silent>" ""<Esc>i
+inoremap <silent>/** /**  */<Esc>hhi
 

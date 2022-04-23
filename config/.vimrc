@@ -6,10 +6,10 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'Lokaltog/vim-distinguished'
 
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+
 "Plugin 'yxjorhs/my-vim'
 Plugin 'git@github.com:yxjorhs/my-vim.git'
-
-Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 
 call vundle#end()
 
