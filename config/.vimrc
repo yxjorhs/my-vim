@@ -2,15 +2,14 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
 Plugin 'VundleVim/Vundle.vim'
-
 Plugin 'leafgarland/typescript-vim'
+Plugin 'Lokaltog/vim-distinguished'
 
 "Plugin 'yxjorhs/my-vim'
 Plugin 'git@github.com:yxjorhs/my-vim.git'
 
-Plugin 'Lokaltog/vim-distinguished'
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 
 call vundle#end()
 
@@ -24,3 +23,4 @@ set relativenumber
 set shiftwidth=2
 set hlsearch
 syntax on
+let g:coc_disable_startup_warning = 1
