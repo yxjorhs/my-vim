@@ -23,6 +23,7 @@ fi
 # install 
 git clone https://github.com/VundleVim/Vundle.vim.git $home.vim/bundle/Vundle.vim &&
 git clone https://github.com/yxjorhs/my-vim.git $home.vim/bundle/my-vim &&
-cp $home.vim/bundle/my-vim/config/.vimrc $vimrc &&
-cp $home.vim/bundle/my-vim/config/coc-settings.json $home.vim/ &&
-vim +PluginInstall +qall
+ln $home.vim/bundle/my-vim/config/.vimrc $vimrc &&
+ln $home.vim/bundle/my-vim/config/coc-settings.json $home.vim/coc-settings.json &&
+vim +PluginInstall +qall &&
+vim +"CocInstall coc-json coc-tsserver" +qall
