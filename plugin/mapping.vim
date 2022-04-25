@@ -3,16 +3,16 @@ let mapleader = " "
 inoremap <silent>jk <Esc>l
 vnoremap <silent>jk <Esc>
 
-nnoremap <silent><leader><leader> :
+nnoremap <leader><leader> :
 
 " execute test function
 nnoremap <silent><leader>t :call test#test()<cr>
 
 " save
-nnoremap <silent><leader>s :w<cr>
+nnoremap <leader>s :w<cr>
 
 " go to cmd
-nnoremap <silent><leader>c :!
+nnoremap <leader>c :!
 
 " window operate 
 nnoremap <silent><leader>wh <c-w>h

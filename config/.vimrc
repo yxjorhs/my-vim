@@ -22,5 +22,6 @@ set number
 set relativenumber 
 set shiftwidth=2
 set hlsearch
+set cmdheight=2
 syntax on
 let g:coc_disable_startup_warning = 1
