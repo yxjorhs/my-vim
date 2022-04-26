@@ -12,7 +12,7 @@ Plugin 'Lokaltog/vim-distinguished'
 
 call vundle#end()
 
-colorscheme distinguished
+colorscheme distinguished "distinguished, evening, morning
 filetype plugin indent on
 syntax on
 
@@ -34,6 +34,7 @@ let g:coc_global_extensions = [
       \'coc-git',
       \'coc-json',
       \'coc-tsserver',
+      \'coc-snippets',
       \]
 
 " mapping
@@ -62,6 +63,8 @@ nnoremap <silent><leader>wn :vsp<cr>
 nnoremap <silent><leader>bl :ls<cr>
 nnoremap <silent><leader>bd :bd<cr>
 nnoremap <silent><leader>bn :bn<cr>
+nnoremap <silent><leader>bp :bp<cr>
+nnoremap <leader>bb :b 
 
 inoremap <silent>{ {<cr>}<Esc>O
 inoremap <silent>( ()<Esc>i
@@ -71,16 +74,28 @@ inoremap <silent>' ''<Esc>i
 inoremap <silent>" ""<Esc>i
 inoremap <silent>/** /**  */<Esc>hhi
 
+"tab
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+      \ pumvisible() ?
+	\ coc#expandableOrJumpable() ?
+	  \ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>"
+	  \ :"\<C-n>"
+	\ :<SID>check_back_space() ?
+	  \ "\<TAB>"
+	  \ :coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
 
 " GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent><leader>gd <Plug>(coc-definition)
+nmap <silent><leader>gy <Plug>(coc-type-definition)
+nmap <silent><leader>gi <Plug>(coc-implementation)
+nmap <silent><leader>gr <Plug>(coc-references)
 
 " show document
 nnoremap <silent> <leader>h :call <SID>show_document()<CR>
