@@ -1,6 +1,8 @@
 set nocompatible
 filetype off
+
 set rtp+=~/.vim/bundle/Vundle.vim
+
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
@@ -25,6 +27,7 @@ set laststatus=2
 set number
 set relativenumber 
 set shiftwidth=2
+set tabstop=2
 set shortmess+=c
 set signcolumn=yes
 set updatetime=300
@@ -70,6 +73,7 @@ inoremap <silent>{ {<cr>}<Esc>O
 inoremap <silent>( ()<Esc>i
 inoremap <silent>< <><Esc>i
 inoremap <silent>[ []<Esc>i
+inoremap <silent>` ``<Esc>i
 inoremap <silent>' ''<Esc>i
 inoremap <silent>" ""<Esc>i
 inoremap <silent>/** /**  */<Esc>hhi
