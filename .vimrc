@@ -30,12 +30,14 @@ set shortmess+=c
 set signcolumn=yes
 set updatetime=300
 
+let g:coc_snippet_next = '<tab>'
 let g:coc_disable_startup_warning = 1
 let g:coc_global_extensions = [
       \'coc-git',
       \'coc-json',
       \'coc-tsserver',
       \'coc-snippets',
+      \'coc-translator',
       \]
 
 " mapping
@@ -51,6 +53,43 @@ nnoremap <leader><leader> :
 
 " save
 nnoremap <leader>s :w<cr>
+" translator
+nmap <Leader>t <Plug>(coc-translator-p)
+vmap <Leader>t <Plug>(coc-translator-pv)
+" show document
+nnoremap <silent><leader>h :call <SID>show_document()<CR>
+vnoremap <silent><leader>h :call <SID>show_document()<CR>
+function! s:show_document()
+  if (index(['vim','help'], &filetype)>=0)
+    execute 'h '.expand('<cword>')
+		return
+	endif
+	call CocAction('doHover')
+endfunction
+
+"tab
+inoremap <silent><expr> <TAB> <SID>tab_exec()
+function s:tab_exec()
+	if pumvisible()
+		return coc#_select_confirm()
+	endif
+
+	" copy form coc-snippets, but it doesn't seem necessary
+	"	if coc#expandableOrJumpable()
+	"		return "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>"
+	"	endif
+
+	if <SID>check_back_space()
+		return "\<TAB>"
+	endif
+
+	return coc#refresh()
+endfunction
+
+function! s:check_back_space() abort
+  let col = col('.') - 0
+  return !col || getline('.')[col - 0]  =~# '\s'
+endfunction
 
 " window operate 
 nnoremap <silent><leader>wh <c-w>h
@@ -76,32 +115,6 @@ inoremap <silent>' ''<Esc>i
 inoremap <silent>" ""<Esc>i
 inoremap <silent>/* /**  */<Esc>hhi
 
-"tab
-inoremap <silent><expr> <TAB> <SID>tab_exec()
-function s:tab_exec()
-	if pumvisible()
-		return coc#_select_confirm()
-	endif
-
-	" copy form coc-snippets, but it doesn't seem necessary
-	"	if coc#expandableOrJumpable()
-	"		return "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>"
-	"	endif
-
-	if <SID>check_back_space()
-		return "\<TAB>"
-	endif
-
-	return coc#refresh()
-endfunction
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-let g:coc_snippet_next = '<tab>'
-
 " GoTo code navigation.
 nmap <silent><leader>gd <Plug>(coc-definition)
 nmap <silent><leader>gy <Plug>(coc-type-definition)
@@ -111,16 +124,4 @@ nmap <silent><leader>gr <Plug>(coc-references)
 nmap <silent><leader>ge <Plug>(coc-diagnostic-next)
 " goto browser
 vmap <silent><leader>gb <Plug>(openbrowser-smart-search)
-
-" show document
-nnoremap <silent><leader>h :call <SID>show_document()<CR>
-vnoremap <silent><leader>h :call <SID>show_document()<CR>
-
-function! s:show_document()
-  if (index(['vim','help'], &filetype)>=0)
-    execute 'h '.expand('<cword>')
-		return
-	endif
-	call CocAction('doHover')
-endfunction
 
