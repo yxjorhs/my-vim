@@ -51,11 +51,6 @@ nnoremap <leader><leader> :
 
 " save
 nnoremap <leader>s :w<cr>
-nnoremap <leader>r <c-r>
-" format select code"
-vmap <leader>f <Plug>(coc-format-selected)
-nmap <leader>f <Plug>(coc-format-selected)
-
 
 " window operate 
 nnoremap <silent><leader>wh <c-w>h
