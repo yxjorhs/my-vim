@@ -10,6 +10,7 @@ Plugin 'yxjorhs/my-vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'Lokaltog/vim-distinguished'
 Plugin 'tyru/open-browser.vim'
+Plugin 'christoomey/vim-system-copy'
 call vundle#end()
 
 colorscheme distinguished "distinguished, evening, morning
