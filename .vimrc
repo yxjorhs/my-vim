@@ -30,7 +30,7 @@ set shortmess+=c
 set signcolumn=yes
 set updatetime=300
 
-let g:coc_snippet_next = '<tab>'
+let g:coc_snippet_next = '<cr>'
 let g:coc_disable_startup_warning = 1
 let g:coc_global_extensions = [
       \'coc-git',
@@ -38,6 +38,7 @@ let g:coc_global_extensions = [
       \'coc-tsserver',
       \'coc-snippets',
       \'coc-translator',
+			\'coc-sql',
       \]
 
 " mapping
@@ -48,72 +49,11 @@ vnoremap <silent>jk <Esc>
 
 nnoremap <leader><leader> :
 
-" execute test function
-" nnoremap <silent><leader>t :call test#test()<cr>
-
-" save
-nnoremap <leader>s :w<cr>
-" translator
-nmap <Leader>t <Plug>(coc-translator-p)
-vmap <Leader>t <Plug>(coc-translator-pv)
-" show document
-nnoremap <silent><leader>h :call <SID>show_document()<CR>
-vnoremap <silent><leader>h :call <SID>show_document()<CR>
-function! s:show_document()
-  if (index(['vim','help'], &filetype)>=0)
-    execute 'h '.expand('<cword>')
-		return
-	endif
-	call CocAction('doHover')
-endfunction
-
-"tab
-inoremap <silent><expr> <TAB> <SID>tab_exec()
-function s:tab_exec()
-	if pumvisible()
-		return coc#_select_confirm()
-	endif
-
-	" copy form coc-snippets, but it doesn't seem necessary
-	"	if coc#expandableOrJumpable()
-	"		return "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>"
-	"	endif
-
-	if <SID>check_back_space()
-		return "\<TAB>"
-	endif
-
-	return coc#refresh()
-endfunction
-
-function! s:check_back_space() abort
-  let col = col('.') - 0
-  return !col || getline('.')[col - 0]  =~# '\s'
-endfunction
-
-" window operate 
-nnoremap <silent><leader>wh <c-w>h
-nnoremap <silent><leader>wj <c-w>j
-nnoremap <silent><leader>wk <c-w>k
-nnoremap <silent><leader>wl <c-w>l
-nnoremap <silent><leader>wd :q<cr>
-nnoremap <silent><leader>wn :vsp<cr>
-
 " bufer operate 
 nnoremap <silent><leader>bl :ls<cr>
 nnoremap <silent><leader>bd :bd<cr>
 nnoremap <silent><leader>bn :bn<cr>
-nnoremap <silent><leader>bp :bp<cr>
 nnoremap <leader>bb :b 
-
-inoremap <silent>{ {<cr>}<Esc>O
-inoremap <silent>( ()<Esc>i
-inoremap <silent>< <><Esc>i
-inoremap <silent>[ []<Esc>i
-inoremap <silent>` ``<Esc>i
-inoremap <silent>' ''<Esc>i
-inoremap <silent>" ""<Esc>i
-inoremap <silent>/* /**  */<Esc>hhi
 
 " GoTo code navigation.
 nmap <silent><leader>gd <Plug>(coc-definition)
@@ -124,4 +64,58 @@ nmap <silent><leader>gr <Plug>(coc-references)
 nmap <silent><leader>ge <Plug>(coc-diagnostic-next)
 " goto browser
 vmap <silent><leader>gb <Plug>(openbrowser-smart-search)
+
+" hlep
+nnoremap <silent><leader>h :call <SID>show_document()<CR>
+vnoremap <silent><leader>h :call <SID>show_document()<CR>
+function! s:show_document()
+  if (index(['vim','help'], &filetype)>=0)
+    execute 'h '.expand('<cword>')
+		return
+	endif
+	call CocAction('doHover')
+endfunction
+
+" save
+nnoremap <leader>s :call coc#refresh()<cr>:w<cr>
+" search
+nnoremap <leader>sc :/
+
+" translator
+nmap <Leader>t <Plug>(coc-translator-p)
+vmap <Leader>t <Plug>(coc-translator-pv)
+
+" window operate 
+nnoremap <silent><leader>wh <c-w>h
+nnoremap <silent><leader>wj <c-w>j
+nnoremap <silent><leader>wk <c-w>k
+nnoremap <silent><leader>wl <c-w>l
+nnoremap <silent><leader>wd :q<cr>
+nnoremap <silent><leader>wn :vsp<cr>
+
+" auto complete
+inoremap <silent><expr> <tab> <SID>auto_complete()
+function s:auto_complete()
+	if pumvisible()
+		return coc#_select_confirm()
+	endif
+
+	" copy form coc-snippets, but it doesn't seem necessary
+	"	if coc#expandableOrJumpable()
+	"		return "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>"
+	"	endif
+	"
+	" return "\<space>"
+
+	if <sid>check_back_space()
+		return "\<tab>"
+	endif
+
+	return coc#refresh()
+endfunction
+
+function! s:check_back_space() abort
+  let col = col('.') - 0
+  return !col || getline('.')[col - 0]  =~# '\s'
+endfunction
 

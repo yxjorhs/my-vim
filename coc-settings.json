@@ -1,6 +1,7 @@
 {
 	"snippets.userSnippetsDirectory": "~/.vim/bundle/my-vim/snippets",
 	"coc.preferences.formatOnSaveFiletypes": [
-		"*"
+		"json",
+		"typescript"
 	]
 }
