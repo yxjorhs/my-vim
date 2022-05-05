@@ -55,6 +55,7 @@ vnoremap <leader><leader> :
 " bufer operate 
 nnoremap <silent><leader>bl :ls<cr>
 nnoremap <silent><leader>bd :bd<cr>
+nnoremap <silent><leader>bp :bp<cr>
 nnoremap <silent><leader>bn :bn<cr>
 nnoremap <leader>bb :b 
 
