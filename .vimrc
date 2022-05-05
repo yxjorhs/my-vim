@@ -48,6 +48,7 @@ inoremap <silent>jk <Esc>l
 vnoremap <silent>jk <Esc>
 
 nnoremap <leader><leader> :
+vnoremap <leader><leader> :
 
 " tab
 inoremap <silent><expr> <tab> <SID>auto_complete()
@@ -72,6 +73,7 @@ endfunction
 " bufer operate 
 nnoremap <silent><leader>bl :ls<cr>
 nnoremap <silent><leader>bd :bd<cr>
+nnoremap <silent><leader>bp :bp<cr>
 nnoremap <silent><leader>bn :bn<cr>
 nnoremap <leader>bb :b 
 
