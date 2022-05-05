@@ -19,6 +19,7 @@ syntax on
 
 set clipboard=unnamedplus
 set encoding=utf-8
+set expandtab
 set hidden
 set hlsearch
 set incsearch
@@ -26,9 +27,9 @@ set laststatus=2
 set number
 set relativenumber 
 set shiftwidth=2
-set tabstop=2
 set shortmess+=c
 set signcolumn=yes
+set tabstop=2
 set updatetime=300
 
 let g:coc_snippet_next = '<cr>'
@@ -49,6 +50,7 @@ inoremap <silent>jk <Esc>l
 vnoremap <silent>jk <Esc>
 
 nnoremap <leader><leader> :
+vnoremap <leader><leader> :
 
 " bufer operate 
 nnoremap <silent><leader>bl :ls<cr>
