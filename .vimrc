@@ -1,6 +1,5 @@
 set nocompatible
 filetype off
-
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
@@ -17,8 +16,8 @@ colorscheme distinguished "distinguished, evening, morning
 filetype plugin indent on
 syntax on
 
-set clipboard=unnamedplus
 set encoding=utf-8
+set expandtab
 set hidden
 set hlsearch
 set incsearch
@@ -26,9 +25,9 @@ set laststatus=2
 set number
 set relativenumber 
 set shiftwidth=2
-set tabstop=2
 set shortmess+=c
 set signcolumn=yes
+set tabstop=2
 set updatetime=300
 
 let g:coc_snippet_next = '<cr>'
@@ -49,6 +48,26 @@ inoremap <silent>jk <Esc>l
 vnoremap <silent>jk <Esc>
 
 nnoremap <leader><leader> :
+
+" tab
+inoremap <silent><expr> <tab> <SID>auto_complete()
+function s:auto_complete()
+	if pumvisible()
+		return coc#_select_confirm()
+	endif
+
+	if <sid>check_back_space()
+		return "\<tab>"
+	endif
+
+	return coc#refresh()
+endfunction
+
+function! s:check_back_space() abort
+  let col = col('.') - 0
+  return !col || getline('.')[col - 0]  =~# '\s'
+endfunction
+
 
 " bufer operate 
 nnoremap <silent><leader>bl :ls<cr>
@@ -93,30 +112,4 @@ nnoremap <silent><leader>wk <c-w>k
 nnoremap <silent><leader>wl <c-w>l
 nnoremap <silent><leader>wd :q<cr>
 nnoremap <silent><leader>wn :vsp<cr>
-
-" auto complete
-inoremap <silent><expr> <tab> <SID>auto_complete()
-function s:auto_complete()
-	if pumvisible()
-		return coc#_select_confirm()
-	endif
-
-	" copy form coc-snippets, but it doesn't seem necessary
-	"	if coc#expandableOrJumpable()
-	"		return "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>"
-	"	endif
-	"
-	" return "\<space>"
-
-	if <sid>check_back_space()
-		return "\<tab>"
-	endif
-
-	return coc#refresh()
-endfunction
-
-function! s:check_back_space() abort
-  let col = col('.') - 0
-  return !col || getline('.')[col - 0]  =~# '\s'
-endfunction
 
