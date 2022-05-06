@@ -77,6 +77,10 @@ nnoremap <silent><leader>bp :bp<cr>
 nnoremap <silent><leader>bn :bn<cr>
 nnoremap <leader>bb :b 
 
+" format
+vmap <leader>f <Plug>(coc-format-selected)
+nmap <leader>f <Plug>(coc-format-selected)
+
 " GoTo code navigation.
 nmap <silent><leader>gd <Plug>(coc-definition)
 nmap <silent><leader>gy <Plug>(coc-type-definition)
