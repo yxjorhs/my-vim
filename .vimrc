@@ -29,6 +29,7 @@ set shortmess+=c
 set signcolumn=yes
 set tabstop=2
 set updatetime=300
+set showtabline=2
 
 let g:coc_snippet_next = '<cr>'
 let g:coc_disable_startup_warning = 1
@@ -47,9 +48,6 @@ let mapleader = " "
 
 inoremap <silent>jk <Esc>l
 vnoremap <silent>jk <Esc>
-
-nnoremap <leader><leader> :
-vnoremap <leader><leader> :
 
 " tab
 inoremap <silent><expr> <tab> <SID>auto_complete()
@@ -78,8 +76,6 @@ nnoremap <silent><leader>bp :bp<cr>
 nnoremap <silent><leader>bn :bn<cr>
 nnoremap <leader>bb :b 
 
-nmap <leader>e :e 
-
 " format
 vmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>f <Plug>(coc-format-selected)
@@ -107,18 +103,25 @@ endfunction
 
 " save
 nnoremap <leader>s :call coc#refresh()<cr>:w<cr>
-" search
-nnoremap <leader>sc :/
 
-" translator
-nmap <Leader>t <Plug>(coc-translator-p)
-vmap <Leader>t <Plug>(coc-translator-pv)
+" tab operate
+nnoremap <leader>tn :tabe 
+nnoremap <silent><leader>th :tabp<cr>
+nnoremap <silent><leader>tl :tabn<cr>
+nnoremap <silent><leader>td :tabc<cr>
+nnoremap <silent><leader>to :tabo<cr>
 
 " window operate 
+nnoremap <leader>wn :vsp 
 nnoremap <silent><leader>wh <c-w>h
 nnoremap <silent><leader>wj <c-w>j
 nnoremap <silent><leader>wk <c-w>k
 nnoremap <silent><leader>wl <c-w>l
 nnoremap <silent><leader>wd :q<cr>
-nnoremap <silent><leader>wn :vsp<cr>
 
+nnoremap <Leader><Leader>s :source $MYVIMRC<cr>
+" translator
+nmap <Leader><Leader>t <Plug>(coc-translator-p)
+vmap <Leader><Leader>t <Plug>(coc-translator-pv)
+" diff
+nnoremap <Leader><Leader>diff :vert diffsplit 
