@@ -76,6 +76,10 @@ nnoremap <silent><leader>bp :bp<cr>
 nnoremap <silent><leader>bn :bn<cr>
 nnoremap <leader>bb :b 
 
+nnoremap <leader>c :CocCommand 
+
+nnoremap <leader>e :e 
+
 " format
 vmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>f <Plug>(coc-format-selected)
@@ -105,23 +109,25 @@ endfunction
 nnoremap <leader>s :call coc#refresh()<cr>:w<cr>
 
 " tab operate
-nnoremap <leader>tn :tabe 
+nnoremap <leader>tn :tabe %<cr>
 nnoremap <silent><leader>th :tabp<cr>
 nnoremap <silent><leader>tl :tabn<cr>
 nnoremap <silent><leader>td :tabc<cr>
 nnoremap <silent><leader>to :tabo<cr>
 
 " window operate 
-nnoremap <leader>wn :vsp 
+nnoremap <leader>wn :vsp<cr>
 nnoremap <silent><leader>wh <c-w>h
 nnoremap <silent><leader>wj <c-w>j
 nnoremap <silent><leader>wk <c-w>k
 nnoremap <silent><leader>wl <c-w>l
 nnoremap <silent><leader>wd :q<cr>
 
+" diff
+nnoremap <Leader><Leader>diff :vert diffsplit 
 nnoremap <Leader><Leader>s :source $MYVIMRC<cr>
 " translator
 nmap <Leader><Leader>t <Plug>(coc-translator-p)
 vmap <Leader><Leader>t <Plug>(coc-translator-pv)
-" diff
-nnoremap <Leader><Leader>diff :vert diffsplit 
+
+omap ig <Plug>(coc-git-chunk-inner)
