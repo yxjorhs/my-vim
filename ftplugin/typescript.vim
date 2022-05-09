@@ -4,7 +4,7 @@ inoremap <buffer><silent>[ []<Esc>i
 inoremap <buffer><silent>` ``<Esc>i
 inoremap <buffer><silent>' ''<Esc>i
 inoremap <buffer><silent>" ""<Esc>i
-inoremap <buffer><silent>/* /**  */<Esc>hhi
+"inoremap <buffer><silent>/* /**  */<Esc>hhi
 
 inoremap <buffer><silent><expr><cr> <SID>cr_exec()
 function s:cr_exec()

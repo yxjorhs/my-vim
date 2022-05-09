@@ -130,4 +130,3 @@ nnoremap <Leader><Leader>s :source $MYVIMRC<cr>
 nmap <Leader><Leader>t <Plug>(coc-translator-p)
 vmap <Leader><Leader>t <Plug>(coc-translator-pv)
 
-omap ig <Plug>(coc-git-chunk-inner)
