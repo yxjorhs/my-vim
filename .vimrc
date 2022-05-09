@@ -105,8 +105,15 @@ function! s:show_document()
 	call CocAction('doHover')
 endfunction
 
+" replace
+vnoremap <leader>r :<c-u>execute '%s/'.expand('<cword>').'//g'<LEFT><LEFT><LEFT>
+
 " save
 nnoremap <leader>s :call coc#refresh()<cr>:w<cr>
+" search
+vnoremap <leader>s :<c-u>execute '/'.expand('<cword>')<CR>
+" search in project TODO ignore some dir
+"vnoremap <leader>sp :<c-u>execute 'grep '.expand('<cword>').' * -r'<CR>
 
 " tab operate
 nnoremap <leader>tn :tabe %<cr>
@@ -125,6 +132,7 @@ nnoremap <silent><leader>wd :q<cr>
 
 " diff
 nnoremap <Leader><Leader>diff :vert diffsplit 
+" source $MYVIMRC
 nnoremap <Leader><Leader>s :source $MYVIMRC<cr>
 " translator
 nmap <Leader><Leader>t <Plug>(coc-translator-p)
