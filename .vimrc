@@ -68,31 +68,19 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 0]  =~# '\s'
 endfunction
 
-
-" bufer operate 
-nnoremap <silent><leader>bl :ls<cr>
-nnoremap <silent><leader>bd :bd<cr>
-nnoremap <silent><leader>bp :bp<cr>
-nnoremap <silent><leader>bn :bn<cr>
-nnoremap <leader>bb :b 
-
-nnoremap <leader>c :CocCommand 
-
+nnoremap <leader>b :b 
 nnoremap <leader>e :e 
 
 " format
 vmap <leader>f <Plug>(coc-format-selected)
-nmap <leader>f <Plug>(coc-format-selected)
 
 " GoTo code navigation.
-nmap <silent><leader>gd <Plug>(coc-definition)
-nmap <silent><leader>gy <Plug>(coc-type-definition)
-nmap <silent><leader>gi <Plug>(coc-implementation)
-nmap <silent><leader>gr <Plug>(coc-references)
+nmap <silent><leader>gd mT:<C-u>call CocActionAsync('jumpDefinition')<CR>
+nmap <silent><leader>gr mT:<C-u>call CocActionAsync('jumpReferences')<CR>
 " goto complete error
-nmap <silent><leader>ge <Plug>(coc-diagnostic-next)
-" goto browser
-vmap <silent><leader>gb <Plug>(openbrowser-smart-search)
+nmap <silent><leader>ge <Plug>(coc-diagnostic-next-error)
+" go back
+nnoremap <silent><leader>gb `T
 
 " hlep
 nnoremap <silent><leader>h :call <SID>show_document()<CR>
@@ -109,11 +97,13 @@ endfunction
 vnoremap <leader>r :<c-u>execute '%s/'.expand('<cword>').'//g'<LEFT><LEFT><LEFT>
 
 " save
-nnoremap <leader>s :call coc#refresh()<cr>:w<cr>
+nnoremap <leader>s 
+      \:call coc#refresh()<cr>
+      \:w<cr>
 " search
 vnoremap <leader>s :<c-u>execute '/'.expand('<cword>')<CR>
 " search in project TODO ignore some dir
-"vnoremap <leader>sp :<c-u>execute 'grep '.expand('<cword>').' * -r'<CR>
+" vnoremap <leader>sp :<c-u>execute 'grep '.expand('<cword>').' * -r'<CR>
 
 " tab operate
 nnoremap <leader>tn :tabe %<cr>
@@ -130,11 +120,8 @@ nnoremap <silent><leader>wk <c-w>k
 nnoremap <silent><leader>wl <c-w>l
 nnoremap <silent><leader>wd :q<cr>
 
-" diff
-nnoremap <Leader><Leader>diff :vert diffsplit 
-" source $MYVIMRC
+" refresh vimrc
 nnoremap <Leader><Leader>s :source $MYVIMRC<cr>
 " translator
 nmap <Leader><Leader>t <Plug>(coc-translator-p)
 vmap <Leader><Leader>t <Plug>(coc-translator-pv)
-
