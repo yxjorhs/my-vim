@@ -78,7 +78,7 @@ vmap <leader>f <Plug>(coc-format-selected)
 nmap <silent><leader>gd mT:<C-u>call CocActionAsync('jumpDefinition')<CR>
 nmap <silent><leader>gr mT:<C-u>call CocActionAsync('jumpReferences')<CR>
 " goto complete error
-nmap <silent><leader>ge <Plug>(coc-diagnostic-next-error)
+nmap <silent><leader>ge <Plug>(coc-diagnostic-next)
 " go back
 nnoremap <silent><leader>gb `T
 
@@ -122,6 +122,7 @@ nnoremap <silent><leader>wd :q<cr>
 
 " refresh vimrc
 nnoremap <Leader><Leader>s :source $MYVIMRC<cr>
+nnoremap <Leader><Leader>snp :e ~/.vim/bundle/my-vim/snippets<cr>
 " translator
 nmap <Leader><Leader>t <Plug>(coc-translator-p)
 vmap <Leader><Leader>t <Plug>(coc-translator-pv)

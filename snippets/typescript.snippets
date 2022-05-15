@@ -23,5 +23,31 @@
 #		endsnippet
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
-snippet debug "debug log" b
-console.debug("${1}", ${2})
+snippet dbg "debug log" b
+console.debug("==========${1}==========", ${2})
+
+snippet rt "return" b
+return {
+  code: '${1:suc}' as const,$0
+}
+
+snippet ip "import" b
+import ${1:assert} from '${2:assert}';
+
+snippet en "enum" b
+enum $1 {
+  $0
+}
+
+snippet rm "remark" b
+/** $1 */
+
+snippet { "{}" b
+{
+  $0
+}
+
+snippet ( "()" b
+(
+  $0
+)

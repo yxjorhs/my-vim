@@ -3,5 +3,6 @@
   "coc.preferences.formatOnSaveFiletypes": [
     "json"
   ],
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "typescript.suggest.completeJSDocs": true
 }
