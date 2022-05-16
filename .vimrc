@@ -99,8 +99,8 @@ nnoremap <tab>gs :!clear
 nnoremap <tab>ga :w<cr>
       \:execute '!clear && pwd && git add '.expand('%')<cr>
       \:CocCommand git.refresh<cr>
-nnoremap <tab>gc :!clear && git commit -m ''<LEFT>
-nnoremap <tab>gp :!clear && git push<cr>
+nnoremap <tab>gc :!clear && pwd && git commit -m ''<LEFT>
+nnoremap <tab>gp :!clear && pwd && git push<cr>
 
 " hlep
 nnoremap <silent><leader>h :call <SID>show_document()<CR>
