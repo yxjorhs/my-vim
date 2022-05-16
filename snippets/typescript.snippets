@@ -28,7 +28,7 @@ console.debug("==========${1}==========", ${2})
 
 snippet rt "return" b
 return {
-  code: '${1:suc}' as const,$0
+  code: '${1:ok}' as const,$0
 }
 
 snippet ip "import" b
@@ -47,7 +47,12 @@ snippet { "{}" b
   $0
 }
 
+snippet [ "[]" b
+[$0]
+
 snippet ( "()" b
-(
-  $0
-)
+($0)
+
+snippet ' "''" b
+'$1'$0
+

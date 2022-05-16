@@ -30,6 +30,7 @@ set signcolumn=yes
 set tabstop=2
 set updatetime=300
 set showtabline=2
+" set fdm=indent
 
 let g:coc_snippet_next = '<cr>'
 let g:coc_disable_startup_warning = 1
@@ -69,10 +70,12 @@ function! s:check_back_space() abort
 endfunction
 
 nnoremap <leader>b :b 
+nnoremap <leader>c :CocCommand 
 nnoremap <leader>e :e 
 
-" format
-vmap <leader>f <Plug>(coc-format-selected)
+" find
+nnoremap <leader>f :/
+vnoremap <leader>f :<c-u>execute '/'.expand('<cword>')<CR>
 
 " GoTo code navigation.
 nmap <silent><leader>gd mT:<C-u>call CocActionAsync('jumpDefinition')<CR>
@@ -100,8 +103,6 @@ vnoremap <leader>r :<c-u>execute '%s/'.expand('<cword>').'//g'<LEFT><LEFT><LEFT>
 nnoremap <leader>s 
       \:call coc#refresh()<cr>
       \:w<cr>
-" search
-vnoremap <leader>s :<c-u>execute '/'.expand('<cword>')<CR>
 " search in project TODO ignore some dir
 " vnoremap <leader>sp :<c-u>execute 'grep '.expand('<cword>').' * -r'<CR>
 
@@ -120,6 +121,8 @@ nnoremap <silent><leader>wk <c-w>k
 nnoremap <silent><leader>wl <c-w>l
 nnoremap <silent><leader>wd :q<cr>
 
+" format
+vmap <leader><leader>f <Plug>(coc-format-selected)
 " refresh vimrc
 nnoremap <Leader><Leader>s :source $MYVIMRC<cr>
 nnoremap <Leader><Leader>snp :e ~/.vim/bundle/my-vim/snippets<cr>
