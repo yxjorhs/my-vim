@@ -72,8 +72,7 @@ endfunction
 " mapping
 nnoremap <leader>b :b 
 
-nnoremap <leader>cc :CocCommand<cr>
-nnoremap <leader>cl :CocList<cr>
+nnoremap <leader>c :!clear && 
 
 nnoremap <leader>e :e 
 " open config
