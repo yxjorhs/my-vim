@@ -51,7 +51,7 @@ inoremap <silent>jk <Esc>l
 vnoremap <silent>jk <Esc>
 
 " tab
-inoremap <silent><expr> <tab> <SID>auto_complete()
+inoremap <silent><expr><tab> <SID>auto_complete()
 function s:auto_complete()
 	if pumvisible()
 		return coc#_select_confirm()
@@ -69,13 +69,22 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 0]  =~# '\s'
 endfunction
 
+" mapping
 nnoremap <leader>b :b 
-nnoremap <leader>c :CocCommand 
+
+nnoremap <leader>cc :CocCommand<cr>
+nnoremap <leader>cl :CocList<cr>
+
 nnoremap <leader>e :e 
+" open config
+nnoremap <Leader><Leader>es :e ~/.vim/bundle/my-vim/snippets<cr>
+nnoremap <Leader><Leader>ev :e $MYVIMRC<cr>
 
 " find
-nnoremap <leader>f :/
+nnoremap <leader>f /
 vnoremap <leader>f :<c-u>execute '/'.expand('<cword>')<CR>
+" format
+vmap <leader><leader>f <Plug>(coc-format-selected)
 
 " GoTo code navigation.
 nmap <silent><leader>gd mT:<C-u>call CocActionAsync('jumpDefinition')<CR>
@@ -84,6 +93,15 @@ nmap <silent><leader>gr mT:<C-u>call CocActionAsync('jumpReferences')<CR>
 nmap <silent><leader>ge <Plug>(coc-diagnostic-next)
 " go back
 nnoremap <silent><leader>gb `T
+" git
+nnoremap <tab>gs :!clear
+      \&& pwd
+      \&& git status<cr>
+nnoremap <tab>ga :w<cr>
+      \:execute '!clear && pwd && git add '.expand('%')<cr>
+      \:CocCommand git.refresh<cr>
+nnoremap <tab>gc :!git commit -m ''<LEFT>
+nnoremap <tab>gp :!git push<cr>
 
 " hlep
 nnoremap <silent><leader>h :call <SID>show_document()<CR>
@@ -96,6 +114,26 @@ function! s:show_document()
 	call CocAction('doHover')
 endfunction
 
+nnoremap <leader>j :call Scroll(0)<cr>
+nnoremap <leader>k :call Scroll(1)<cr>
+function Scroll(up)
+  if a:up
+    let scrollaction="\<c-y>"
+  else
+    let scrollaction="\<c-e>"
+  endif
+
+  let counter=1
+  while counter<&scroll * 1
+    let counter+=1
+    exec "normal! " . scrollaction
+    redraw
+    exec "sleep 15m"
+  endwhile
+endfunction
+
+nnoremap <silent><leader>q :q<cr>
+
 " replace
 vnoremap <leader>r :<c-u>execute '%s/'.expand('<cword>').'//g'<LEFT><LEFT><LEFT>
 
@@ -103,29 +141,17 @@ vnoremap <leader>r :<c-u>execute '%s/'.expand('<cword>').'//g'<LEFT><LEFT><LEFT>
 nnoremap <leader>s 
       \:call coc#refresh()<cr>
       \:w<cr>
-" search in project TODO ignore some dir
-" vnoremap <leader>sp :<c-u>execute 'grep '.expand('<cword>').' * -r'<CR>
-
-" tab operate
-nnoremap <leader>tn :tabe %<cr>
-nnoremap <silent><leader>th :tabp<cr>
-nnoremap <silent><leader>tl :tabn<cr>
-nnoremap <silent><leader>td :tabc<cr>
-nnoremap <silent><leader>to :tabo<cr>
-
-" window operate 
-nnoremap <leader>wn :vsp<cr>
-nnoremap <silent><leader>wh <c-w>h
-nnoremap <silent><leader>wj <c-w>j
-nnoremap <silent><leader>wk <c-w>k
-nnoremap <silent><leader>wl <c-w>l
-nnoremap <silent><leader>wd :q<cr>
-
-" format
-vmap <leader><leader>f <Plug>(coc-format-selected)
 " refresh vimrc
 nnoremap <Leader><Leader>s :source $MYVIMRC<cr>
-nnoremap <Leader><Leader>snp :e ~/.vim/bundle/my-vim/snippets<cr>
+
+" tab operate
+nnoremap <silent><leader>t :tabn<cr>
+nnoremap <silent><leader><leader>t :tabe %<cr>
 " translator
-nmap <Leader><Leader>t <Plug>(coc-translator-p)
-vmap <Leader><Leader>t <Plug>(coc-translator-pv)
+nmap <silent><tab>t <Plug>(coc-translator-p)
+vmap <silent><tab>t <Plug>(coc-translator-pv)
+
+" window operate 
+nnoremap <silent><leader>w <c-w><c-w>
+nnoremap <silent><leader><leader>w :vsp<cr>
+
