@@ -1,7 +1,8 @@
 {
   "snippets.userSnippetsDirectory": "~/.vim/bundle/my-vim/snippets",
   "coc.preferences.formatOnSaveFiletypes": [
-    "json"
+    "json",
+    "typescript"
   ],
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "typescript.suggest.completeJSDocs": true

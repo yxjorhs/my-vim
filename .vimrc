@@ -50,6 +50,13 @@ let mapleader = " "
 inoremap <silent>jk <Esc>l
 vnoremap <silent>jk <Esc>
 
+inoremap ' ''<LEFT>
+inoremap " ""<LEFT>
+inoremap ` ``<LEFT>
+inoremap ( ()<LEFT>
+inoremap [ []<LEFT>
+inoremap { {}<LEFT>
+
 " tab
 inoremap <silent><expr><tab> <SID>auto_complete()
 function s:auto_complete()
@@ -83,7 +90,8 @@ nnoremap <Leader><Leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>f /
 vnoremap <leader>f :<c-u>execute '/'.expand('<cword>')<CR>
 " format
-vmap <leader><leader>f <Plug>(coc-format-selected)
+""vmap <leader><leader>f <Plug>(coc-format-selected)
+""nmap <leader><leader>f <Plug>(coc-format-selected)
 
 " GoTo code navigation.
 nmap <silent><leader>gd mT:<C-u>call CocActionAsync('jumpDefinition')<CR>
@@ -93,14 +101,14 @@ nmap <silent><leader>ge <Plug>(coc-diagnostic-next)
 " go back
 nnoremap <silent><leader>gb `T
 " git
-nnoremap <tab>gs :!clear
-      \&& pwd
-      \&& git status<cr>
-nnoremap <tab>ga :w<cr>
-      \:execute '!clear && pwd && git add '.expand('%')<cr>
-      \:CocCommand git.refresh<cr>
-nnoremap <tab>gc :!clear && pwd && git commit -m ''<LEFT>
-nnoremap <tab>gp :!clear && pwd && git push<cr>
+""nnoremap <tab>gs :!clear
+""      \&& pwd
+""      \&& git status<cr>
+""nnoremap <tab>ga :w<cr>
+""      \:execute '!clear && pwd && git add '.expand('%')<cr>
+""      \:CocCommand git.refresh<cr>
+""nnoremap <tab>gc :!clear && pwd && git commit -m ''<LEFT>
+""nnoremap <tab>gp :!clear && pwd && git push<cr>
 
 " hlep
 nnoremap <silent><leader>h :call <SID>show_document()<CR>

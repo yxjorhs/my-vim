@@ -28,7 +28,8 @@ console.debug("==========${1}==========", ${2})
 
 snippet rt "return" b
 return {
-  code: '${1:ok}' as const,$0
+  code: '${1:ok}' as const,
+	msg: '${2}',$0
 }
 
 snippet ip "import" b
@@ -41,18 +42,4 @@ enum $1 {
 
 snippet rm "remark" b
 /** $1 */
-
-snippet { "{}" b
-{
-  $0
-}
-
-snippet [ "[]" b
-[$0]
-
-snippet ( "()" b
-($0)
-
-snippet ' "''" b
-'$1'$0
 
