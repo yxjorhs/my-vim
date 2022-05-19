@@ -160,5 +160,5 @@ vmap <silent><tab>t <Plug>(coc-translator-pv)
 
 " window operate 
 nnoremap <silent><leader>w <c-w><c-w>
-nnoremap <silent><leader><leader>w :vsp<cr>
+nnoremap <silent><leader><leader>w :vsp<cr><c-w><c-w>
 
