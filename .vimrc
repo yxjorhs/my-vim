@@ -32,7 +32,7 @@ set updatetime=300
 set showtabline=2
 " set fdm=indent
 
-let g:coc_snippet_next = '<cr>'
+""let g:coc_snippet_next = '<cr>'
 let g:coc_disable_startup_warning = 1
 let g:coc_global_extensions = [
       \'coc-git',
@@ -90,8 +90,8 @@ nnoremap <Leader><Leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>f /
 vnoremap <leader>f :<c-u>execute '/'.expand('<cword>')<CR>
 " format
-""vmap <leader><leader>f <Plug>(coc-format-selected)
-""nmap <leader><leader>f <Plug>(coc-format-selected)
+vmap <leader><leader>f <Plug>(coc-format-selected)
+nmap <leader><leader>f <Plug>(coc-format-selected)
 
 " GoTo code navigation.
 nmap <silent><leader>gd mT:<C-u>call CocActionAsync('jumpDefinition')<CR>
