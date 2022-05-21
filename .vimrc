@@ -32,7 +32,7 @@ set updatetime=300
 set showtabline=2
 " set fdm=indent
 
-""let g:coc_snippet_next = '<cr>'
+let g:coc_snippet_next = '<cr>'
 let g:coc_disable_startup_warning = 1
 let g:coc_global_extensions = [
       \'coc-git',
@@ -80,10 +80,12 @@ endfunction
 nnoremap <leader>b :b 
 
 nnoremap <leader>c :!clear && 
+vmap <Leader><Leader>ce <Plug>(yxjorhs-code-execute)
 
 nnoremap <leader>e :e 
 " open config
-nnoremap <Leader><Leader>es :e ~/.vim/bundle/my-vim/snippets<cr>
+nnoremap <Leader><Leader>em :e ~/.vim/bundle/my-vim/<cr>
+nnoremap <Leader><Leader>ec :e ~/.vim/coc-settings.json<cr>
 nnoremap <Leader><Leader>ev :e $MYVIMRC<cr>
 
 " find
@@ -93,22 +95,12 @@ vnoremap <leader>f :<c-u>execute '/'.expand('<cword>')<CR>
 vmap <leader><leader>f <Plug>(coc-format-selected)
 nmap <leader><leader>f <Plug>(coc-format-selected)
 
-" GoTo code navigation.
 nmap <silent><leader>gd mT:<C-u>call CocActionAsync('jumpDefinition')<CR>
 nmap <silent><leader>gr mT:<C-u>call CocActionAsync('jumpReferences')<CR>
-" goto complete error
 nmap <silent><leader>ge <Plug>(coc-diagnostic-next)
-" go back
 nnoremap <silent><leader>gb `T
-" git
-""nnoremap <tab>gs :!clear
-""      \&& pwd
-""      \&& git status<cr>
-""nnoremap <tab>ga :w<cr>
-""      \:execute '!clear && pwd && git add '.expand('%')<cr>
-""      \:CocCommand git.refresh<cr>
-""nnoremap <tab>gc :!clear && pwd && git commit -m ''<LEFT>
-""nnoremap <tab>gp :!clear && pwd && git push<cr>
+nnoremap <silent><tab>gs :CocCommand git.showCommit<cr>
+nnoremap <silent><tab>gf :CocCommand git.foldUnchanged<cr>
 
 " hlep
 nnoremap <silent><leader>h :call <SID>show_document()<CR>
@@ -121,28 +113,12 @@ function! s:show_document()
 	call CocAction('doHover')
 endfunction
 
-nnoremap <leader>j :call Scroll(0)<cr>
-nnoremap <leader>k :call Scroll(1)<cr>
-function Scroll(up)
-  if a:up
-    let scrollaction="\<c-y>"
-  else
-    let scrollaction="\<c-e>"
-  endif
-
-  let counter=1
-  while counter<&scroll * 1
-    let counter+=1
-    exec "normal! " . scrollaction
-    redraw
-    exec "sleep 15m"
-  endwhile
-endfunction
+nmap <leader>j <Plug>(yxjorhs-scroll-down)
+nmap <leader>k <Plug>(yxjorhs-scroll-up)
 
 nnoremap <silent><leader>q :q<cr>
 
-" replace
-vnoremap <leader>r :<c-u>execute '%s/'.expand('<cword>').'//g'<LEFT><LEFT><LEFT>
+vnoremap <leader>r <Plug>(yxjorhs-word-replace)
 
 " save
 nnoremap <leader>s 
