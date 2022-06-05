@@ -25,7 +25,8 @@
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 snippet ct create table
 CREATE TABLE IF NOT EXISTS \`$1\` (
-  \`id\` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'id',
+  \`id\` VARCHAR(32) PRIMARY KEY COMMENT 'id',
+  \`no\` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id',
   \`create_at\` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   \`update_at\` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'
 ) ENGINE=InnoDB CHARSET=utf8mb4 COMMENT='$2';
