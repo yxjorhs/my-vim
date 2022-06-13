@@ -7,12 +7,13 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'yxjorhs/my-vim'
 Plugin 'leafgarland/typescript-vim'
-Plugin 'Lokaltog/vim-distinguished'
+Plugin 'morhetz/gruvbox'
 Plugin 'tyru/open-browser.vim'
 Plugin 'christoomey/vim-system-copy'
 call vundle#end()
 
-colorscheme distinguished "distinguished, evening, morning
+set background=dark "dark, light
+colorscheme gruvbox "distinguished, evening, morning
 filetype plugin indent on
 syntax on
 
