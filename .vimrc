@@ -12,10 +12,11 @@ Plugin 'tyru/open-browser.vim'
 Plugin 'christoomey/vim-system-copy'
 call vundle#end()
 
-set background=dark "dark, light
-colorscheme gruvbox "distinguished, evening, morning
 filetype plugin indent on
 syntax on
+
+set background=dark "dark, light
+colorscheme gruvbox "distinguished, evening, morning
 
 set encoding=utf-8
 set expandtab
@@ -57,6 +58,8 @@ inoremap ` ``<LEFT>
 inoremap ( ()<LEFT>
 inoremap [ []<LEFT>
 inoremap { {}<LEFT>
+inoremap <c-j> <DOWN>
+inoremap <c-k> <UP>
 
 " tab
 inoremap <silent><expr><tab> <SID>auto_complete()
