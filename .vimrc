@@ -44,6 +44,7 @@ let g:coc_global_extensions = [
       \'coc-translator',
 			\'coc-sql',
 			\'coc-emmet',
+      \'coc-clangd',
       \]
 
 " mapping
