@@ -15,7 +15,7 @@ call vundle#end()
 filetype plugin indent on
 syntax on
 
-set background=dark "dark, light
+set background=light "dark, light
 colorscheme gruvbox "distinguished, evening, morning
 
 set encoding=utf-8
@@ -44,7 +44,7 @@ let g:coc_global_extensions = [
       \'coc-translator',
 			\'coc-sql',
 			\'coc-emmet',
-      \'coc-clangd',
+      \'coc-explorer',
       \]
 
 " mapping
@@ -92,6 +92,7 @@ nnoremap <leader>e :e
 nnoremap <Leader><Leader>em :e ~/.vim/bundle/my-vim/<cr>
 nnoremap <Leader><Leader>ec :e ~/.vim/coc-settings.json<cr>
 nnoremap <Leader><Leader>ev :e $MYVIMRC<cr>
+nnoremap <tab>e <Cmd>CocCommand explorer<CR> 
 
 " find
 nnoremap <leader>f /
