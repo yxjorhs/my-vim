@@ -25,12 +25,12 @@
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 snippet ct create table
 CREATE TABLE IF NOT EXISTS \`$1\` (
-  \`id\` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '递增数字编号',
-  \`no\` VARCHAR(32) NOT NULL COMMENT '字符串编号',
+  \`id\` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '递增数字唯一标识',
+  \`sid\` VARCHAR(32) NOT NULL COMMENT '字符串唯一标识',
   \`createAt\` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   \`updateAt\` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (\`id\`),
-  UNIQUE KEY (\`no\`)
+  UNIQUE KEY (\`sid\`)
 ) ENGINE=InnoDB CHARSET=utf8mb4 COMMENT='$2';
 
 snippet ck create key
