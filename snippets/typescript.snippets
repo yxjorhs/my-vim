@@ -26,20 +26,18 @@
 snippet dbg "debug log" b
 console.debug("==========${1}==========", ${2})
 
-snippet rt "return" b
-return {
-  code: 'OK' as const,
-  msg: '',
-}
-
 snippet ip "import" b
 import ${1:assert} from '${2:assert}';
 
-snippet en "enum" b
-enum $1 {
-  $0
-}
-
 snippet rm "remark" b
 /** $1 */
+
+snippet nf "new file" b
+declare namespace $1 {
+}
+
+class $1 {
+}
+
+export default $1
 
