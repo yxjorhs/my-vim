@@ -41,8 +41,8 @@ class $1 {
 
 export default $1
 
-snippet cf "class from function" b
-public static from($2: any) {
-  return new $1($2)
+snippet fr "public static from" b
+public static from(option: $1.Option) {
+  return new $1(option)
 }
 
