@@ -16,5 +16,6 @@
         "go"
       ]
     }
-  }
+  },
+  "snippets.ultisnips.pythonPrompt": false
 }

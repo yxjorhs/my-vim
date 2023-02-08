@@ -59,14 +59,12 @@ inoremap ` ``<LEFT>
 inoremap ( ()<LEFT>
 inoremap [ []<LEFT>
 inoremap { {}<LEFT>
-inoremap <c-j> <DOWN>
-inoremap <c-k> <UP>
 
 " tab
 inoremap <silent><expr><tab> <SID>auto_complete()
 function s:auto_complete()
-	if pumvisible()
-		return coc#_select_confirm()
+	if coc#pum#visible()
+		return coc#pum#confirm()
 	endif
 
 	if <sid>check_back_space()
